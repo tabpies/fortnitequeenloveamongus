@@ -16,9 +16,12 @@
       justify-content: center;
       align-items: center;
       flex-direction: column; /* Center content vertically */
-    }
-    h1, p, div {
       text-align: center;
+    }
+    /* Remove margins and padding from text elements to stack them with no space */
+    h1, p, div {
+      margin: 0;
+      padding: 0;
     }
     .centered-image {
       max-width: 100%; /* Prevent image from being too large */
