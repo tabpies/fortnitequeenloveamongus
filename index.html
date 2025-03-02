@@ -31,8 +31,24 @@
       max-height: 100%; /* Prevent image from being too large */
       cursor: pointer; /* Make it look clickable */
     }
-    /* Style for play button */
-    .play-button {
+    /* Overlay Style */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+      color: white;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000; /* Ensure it covers the content */
+    }
+    .overlay button {
+      margin-top: 20px;
       padding: 10px 20px;
       background-color: #4CAF50;
       color: white;
@@ -41,15 +57,18 @@
       cursor: pointer;
       border-radius: 5px;
     }
-    .play-button:hover {
+    .overlay button:hover {
       background-color: #45a049;
     }
   </style>
 </head>
 <body>
 
-  <!-- Play Button to Start the Audio -->
-  <button class="play-button" id="playButton">Play Audio</button>
+  <!-- Overlay that appears initially -->
+  <div id="overlay" class="overlay">
+    <p>Click to Access Website</p>
+    <button id="startButton">Start</button>
+  </div>
 
   <!-- Embed YouTube Video as Audio (Initially Hidden) -->
   <iframe id="youtubeAudio" width="0" height="0" style="display:none;" 
@@ -70,6 +89,15 @@
   <p>ᓚ₍ ^. .^₎</p>
 
   <script>
-    // Play the audio when the button is clicked
-    document.getElementById('playButton').addEventListener('click', function() {
-      // Show the iframe (so the video/audio c
+    // When the start button is clicked, remove the overlay and play the audio
+    document.getElementById('startButton').addEventListener('click', function() {
+      // Hide the overlay
+      document.getElementById('overlay').style.display = 'none';
+      
+      // Show the iframe (so the video/audio can play)
+      document.getElementById('youtubeAudio').style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
