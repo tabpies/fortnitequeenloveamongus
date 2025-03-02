@@ -31,16 +31,28 @@
       max-height: 100%; /* Prevent image from being too large */
       cursor: pointer; /* Make it look clickable */
     }
-    /* Style for the hidden iframe */
-    iframe {
-      display: none;
+    /* Style for play button */
+    .play-button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .play-button:hover {
+      background-color: #45a049;
     }
   </style>
 </head>
 <body>
 
-  <!-- Embed YouTube Video as Audio -->
-  <iframe width="0" height="0" style="display:none;" 
+  <!-- Play Button to Start the Audio -->
+  <button class="play-button" id="playButton">Play Audio</button>
+
+  <!-- Embed YouTube Video as Audio (Initially Hidden) -->
+  <iframe id="youtubeAudio" width="0" height="0" style="display:none;" 
           src="https://www.youtube.com/embed/ASqG0q8r7yc?autoplay=1&mute=0&loop=1&playlist=ASqG0q8r7yc" 
           frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
   </iframe>
@@ -57,5 +69,7 @@
   <p>𐔌 . ⋮ i can do a lot in 15 minutes! .ᐟ ֹ ₊ ꒱</p>
   <p>ᓚ₍ ^. .^₎</p>
 
-</body>
-</html>
+  <script>
+    // Play the audio when the button is clicked
+    document.getElementById('playButton').addEventListener('click', function() {
+      // Show the iframe (so the video/audio c
