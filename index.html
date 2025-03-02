@@ -20,18 +20,30 @@
       align-items: center;
       flex-direction: column; /* Center content vertically */
       text-align: center;
-      opacity: 0; /* Start with the content hidden */
-      animation: fadeIn 2s forwards; /* Fade in effect on load */
-      
-      /* Apply the custom cursor */
-      cursor: url('https://custom-cursor.com/wp-content/uploads/2020/08/coffee-beans.png'), auto; /* Custom cursor URL */
     }
 
-    /* Media query for mobile devices to zoom in the background */
-    @media only screen and (max-width: 768px) {
-      body {
-        background-size: 120%; /* Zoom in the background on mobile devices */
-      }
+    /* Style the circular button */
+    .telegram-button {
+      width: 60px; /* Size of the button */
+      height: 60px;
+      border-radius: 50%; /* Makes the button circular */
+      background-color: #0088cc; /* Telegram blue */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease; /* Add hover effect */
+      margin-top: 20px; /* Add some space between button and other elements */
+    }
+
+    .telegram-button:hover {
+      transform: scale(1.1); /* Slight zoom effect when hovering */
+    }
+
+    .telegram-button img {
+      width: 30px; /* Telegram logo size */
+      height: 30px;
     }
 
     /* Remove margins and padding from text elements to stack them with no space */
@@ -46,55 +58,15 @@
       cursor: pointer; /* Make it look clickable */
     }
 
-    /* Overlay Style */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-      color: white;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 1000; /* Ensure it covers the content */
-    }
-
-    .overlay p {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 0;
-      padding: 20px;
-      cursor: pointer; /* Make the text look clickable */
-    }
-
-    /* Change the hover color to light blue (#ADD8E6) */
-    .overlay p:hover {
-      color: #ADD8E6; /* Light blue */
-    }
-
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Overlay that appears initially -->
-  <div id="overlay" class="overlay">
-    <p id="startText">Click to Access Website</p>
-  </div>
-
-  <!-- Embed YouTube Video as Audio (Initially Hidden) -->
-  <iframe id="youtubeAudio" width="0" height="0" style="display:none;" 
-          src="https://www.youtube.com/embed/51zjlMhdSTE?autoplay=1&mute=0&loop=1&playlist=51zjlMhdSTE" 
-          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-  </iframe>
+  <!-- Audio Element to Play Music Automatically -->
+  <audio autoplay loop>
+    <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
 
   <p>୨ৎ</p>
 
@@ -108,16 +80,12 @@
   <p>𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</p>
   <p>ᓚ₍ ^. .^₎</p>
 
-  <script>
-    // When the text is clicked, remove the overlay and play the audio
-    document.getElementById('startText').addEventListener('click', function() {
-      // Hide the overlay
-      document.getElementById('overlay').style.display = 'none';
-      
-      // Show the iframe (so the video/audio can play)
-      document.getElementById('youtubeAudio').style.display = 'block';
-    });
-  </script>
+  <!-- Add a section to hold the Telegram button below other content -->
+  <div>
+    <a href="https://t.me/nekapara" target="_blank" class="telegram-button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+    </a>
+  </div>
 
 </body>
 </html>
