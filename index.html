@@ -6,86 +6,140 @@
   <title>( >_•)︻デ═一</title>
   <link rel="icon" type="jpg" href="https://i.postimg.cc/PxJ5LcQL/e86fefc8a37d7a5959a4b22c94fed482-photoaidcom-cropped.png">
   <style>
-    body {
-      /* Set a background gradient: first color is for the background color, second is the background image */
-      background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)), 
-                  url('https://i.postimg.cc/xdbs0jWq/360-F-534871551-MOmx3mu3o-P1-Tkm-UW8-ZDff-Lp-Hrv86-LLr-E.jpg') no-repeat center center fixed;
-      background-size: 100%; /* Make the image 80% of its original size */
-      color: white;
-      font-family: "Georgia", serif;
-      height: 100vh; /* Ensure body takes full height */
+    /* Basic reset for margins and padding */
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full height of body */
+    body {
+      height: 100vh;
+      margin: 0;
+      font-family: "Georgia", serif;
+      background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)),
+                  url('https://i.postimg.cc/xdbs0jWq/360-F-534871551-MOmx3mu3o-P1-Tkm-UW8-ZDff-Lp-Hrv86-LLr-E.jpg') no-repeat center center fixed;
+      background-size: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column; /* Center content vertically */
+      flex-direction: column;
       text-align: center;
+      color: white;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
     }
 
-    /* Style the circular button */
+    /* Fade in effect */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Overlay style */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Make sure it's above other content */
+    }
+
+    .overlay p {
+      color: #ADD8E6;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .overlay p:hover {
+      color: #fff;
+    }
+
+    /* Style for the circular Telegram button */
     .telegram-button {
-      width: 60px; /* Size of the button */
+      width: 60px;
       height: 60px;
-      border-radius: 50%; /* Makes the button circular */
-      background-color: #0088cc; /* Telegram blue */
+      border-radius: 50%;
+      background-color: #0088cc;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease; /* Add hover effect */
-      margin-top: 20px; /* Add some space between button and other elements */
+      transition: transform 0.3s ease;
+      margin-top: 20px;
     }
 
     .telegram-button:hover {
-      transform: scale(1.1); /* Slight zoom effect when hovering */
+      transform: scale(1.1);
     }
 
     .telegram-button img {
-      width: 30px; /* Telegram logo size */
+      width: 30px;
       height: 30px;
     }
 
-    /* Remove margins and padding from text elements to stack them with no space */
-    h1, p, div {
-      margin: 0;
-      padding: 0;
-    }
-
+    /* Image style */
     .centered-image {
-      max-width: 100%; /* Prevent image from being too large */
-      max-height: 100%; /* Prevent image from being too large */
-      cursor: pointer; /* Make it look clickable */
+      max-width: 100%;
+      max-height: 100%;
+      cursor: pointer;
     }
 
   </style>
 </head>
 <body>
 
-  <!-- Audio Element to Play Music Automatically -->
-  <audio autoplay loop>
-    <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
-
-  <p>୨ৎ</p>
-
-  <!-- Link wrapping the image to make it clickable and redirect to Spotify -->
-  <div>
-    <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=wUK_URorQ0Orj-ObCiFXkg" target="_blank">
-      <img class="centered-image" src="https://i.postimg.cc/hvnZZFZv/b957af897cf278fc393932c562c7918d-removebg-preview-1-Photoroom.png" alt="Centered Image">
-    </a>
+  <!-- Overlay with message to click -->
+  <div class="overlay" id="overlay">
+    <p onclick="removeOverlay()">Click to access website</p>
   </div>
 
-  <p>𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</p>
-  <p>ᓚ₍ ^. .^₎</p>
-
-  <!-- Add a section to hold the Telegram button below other content -->
+  <!-- Content that will be shown after overlay is clicked -->
   <div>
-    <a href="https://t.me/nekapara" target="_blank" class="telegram-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
-    </a>
+    <audio autoplay loop>
+      <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
+      Your browser does not support the audio element.
+    </audio>
+
+    <p>୨ৎ</p>
+
+    <div>
+      <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=wUK_URorQ0Orj-ObCiFXkg" target="_blank">
+        <img class="centered-image" src="https://i.postimg.cc/hvnZZFZv/b957af897cf278fc393932c562c7918d-removebg-preview-1-Photoroom.png" alt="Centered Image">
+      </a>
+    </div>
+
+    <p>𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</p>
+    <p>ᓚ₍ ^. .^₎</p>
+
+    <!-- Telegram button -->
+    <div>
+      <a href="https://t.me/nekapara" target="_blank" class="telegram-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+      </a>
+    </div>
   </div>
+
+  <!-- JavaScript to remove overlay on click -->
+  <script>
+    function removeOverlay() {
+      document.getElementById('overlay').style.display = 'none';
+      document.body.style.opacity = '1'; // Ensure the body is visible once overlay is removed
+    }
+  </script>
 
 </body>
 </html>
