@@ -31,15 +31,19 @@
       max-height: 100%; /* Prevent image from being too large */
       cursor: pointer; /* Make it look clickable */
     }
+    /* Style for the hidden iframe */
+    iframe {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Audio Element to Play Music Automatically -->
-  <audio autoplay loop>
-    <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Embed YouTube Video as Audio -->
+  <iframe width="0" height="0" style="display:none;" 
+          src="https://www.youtube.com/embed/ASqG0q8r7yc?autoplay=1&mute=0&loop=1&playlist=ASqG0q8r7yc" 
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
 
   <p>୨ৎ</p>
 
