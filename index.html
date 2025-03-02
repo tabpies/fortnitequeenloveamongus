@@ -108,8 +108,8 @@
   </div>
 
   <!-- Content that will be shown after overlay is clicked -->
-  <div>
-    <audio autoplay loop>
+  <div id="content" style="display: none;">
+    <audio id="audio" autoplay loop>
       <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
       Your browser does not support the audio element.
     </audio>
@@ -133,11 +133,21 @@
     </div>
   </div>
 
-  <!-- JavaScript to remove overlay on click -->
+  <!-- JavaScript to remove overlay on click and start music -->
   <script>
     function removeOverlay() {
+      // Remove overlay
       document.getElementById('overlay').style.display = 'none';
-      document.body.style.opacity = '1'; // Ensure the body is visible once overlay is removed
+      
+      // Show the website content
+      document.getElementById('content').style.display = 'block';
+      
+      // Play the audio
+      var audio = document.getElementById('audio');
+      audio.play();
+
+      // Ensure the body is visible once overlay is removed
+      document.body.style.opacity = '1'; 
     }
   </script>
 
