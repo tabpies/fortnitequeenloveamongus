@@ -20,17 +20,22 @@
       align-items: center;
       flex-direction: column; /* Center content vertically */
       text-align: center;
+      opacity: 0; /* Start with the content hidden */
+      animation: fadeIn 2s forwards; /* Fade in effect on load */
     }
+    
     /* Remove margins and padding from text elements to stack them with no space */
     h1, p, div {
       margin: 0;
       padding: 0;
     }
+    
     .centered-image {
       max-width: 100%; /* Prevent image from being too large */
       max-height: 100%; /* Prevent image from being too large */
       cursor: pointer; /* Make it look clickable */
     }
+    
     /* Overlay Style */
     .overlay {
       position: fixed;
@@ -47,18 +52,23 @@
       flex-direction: column;
       z-index: 1000; /* Ensure it covers the content */
     }
-    .overlay button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
+
+    .overlay p {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      padding: 20px;
+      cursor: pointer; /* Make the text look clickable */
     }
-    .overlay button:hover {
-      background-color: #45a049;
+
+    .overlay p:hover {
+      color: #4CAF50;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
@@ -66,8 +76,7 @@
 
   <!-- Overlay that appears initially -->
   <div id="overlay" class="overlay">
-    <p>Click to Access Website</p>
-    <button id="startButton">Start</button>
+    <p id="startText">Click to Access Website</p>
   </div>
 
   <!-- Embed YouTube Video as Audio (Initially Hidden) -->
@@ -89,8 +98,8 @@
   <p>ᓚ₍ ^. .^₎</p>
 
   <script>
-    // When the start button is clicked, remove the overlay and play the audio
-    document.getElementById('startButton').addEventListener('click', function() {
+    // When the text is clicked, remove the overlay and play the audio
+    document.getElementById('startText').addEventListener('click', function() {
       // Hide the overlay
       document.getElementById('overlay').style.display = 'none';
       
