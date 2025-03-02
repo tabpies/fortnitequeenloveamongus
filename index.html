@@ -6,120 +6,108 @@
   <title>( >_•)︻デ═一</title>
   <link rel="icon" type="jpg" href="https://i.postimg.cc/PxJ5LcQL/e86fefc8a37d7a5959a4b22c94fed482-photoaidcom-cropped.png">
   <style>
-    /* Basic reset for margins and padding */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Full height of body */
     body {
-      height: 100vh;
-      margin: 0;
-      font-family: "Georgia", serif;
-      background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)),
+      background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)), 
                   url('https://i.postimg.cc/xdbs0jWq/360-F-534871551-MOmx3mu3o-P1-Tkm-UW8-ZDff-Lp-Hrv86-LLr-E.jpg') no-repeat center center fixed;
       background-size: 100%;
+      color: white;
+      font-family: "Georgia", serif;
+      height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
-      color: white;
       opacity: 0;
       animation: fadeIn 2s forwards;
+      cursor: url('https://custom-cursor.com/wp-content/uploads/2020/08/coffee-beans.png'), auto;
     }
 
-    /* Fade in effect */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
+    @media only screen and (max-width: 768px) {
+      body {
+        background-size: 120%;
       }
     }
 
-    /* Overlay style */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999; /* Make sure it's above other content */
+    h1, p, div {
+      margin: 0;
+      padding: 0;
     }
 
-    .overlay p {
-      color: #ADD8E6;
-      font-size: 24px;
-      font-weight: bold;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-
-    .overlay p:hover {
-      color: #fff;
-    }
-
-    /* Image style */
     .centered-image {
       max-width: 100%;
       max-height: 100%;
       cursor: pointer;
     }
 
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .overlay p {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .overlay p:hover {
+      color: #4CAF50;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Overlay with message to click -->
-  <div class="overlay" id="overlay">
-    <p onclick="removeOverlay()">Click to access website</p>
+  <!-- Overlay that appears initially -->
+  <div id="overlay" class="overlay">
+    <p id="startText">Click to Access Website</p>
   </div>
 
-  <!-- Content that will be shown after overlay is clicked -->
-  <div id="content" style="display: none;">
-    <audio id="audio">
-      <source src="https://drive.google.com/uc?export=view&id=1wln53jM-DRqMbsJD_P-jLY014vQIby4o" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
+  <!-- Embed YouTube Audio -->
+  <iframe id="youtubeAudio" width="0" height="0" style="display:none;" 
+          src="https://www.youtube.com/embed/51zjlMhdSTE?autoplay=1&mute=0&loop=1&playlist=51zjlMhdSTE" 
+          frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+  </iframe>
 
-    <p>୨ৎ</p>
+  <p>୨ৎ</p>
 
-    <div>
-      <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=wUK_URorQ0Orj-ObCiFXkg" target="_blank">
-        <img class="centered-image" src="https://i.postimg.cc/hvnZZFZv/b957af897cf278fc393932c562c7918d-removebg-preview-1-Photoroom.png" alt="Centered Image">
-      </a>
-    </div>
-
-    <p>𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</p>
-    <p>ᓚ₍ ^. .^₎</p>
+  <div>
+    <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=wUK_URorQ0Orj-ObCiFXkg" target="_blank">
+      <img class="centered-image" src="https://i.postimg.cc/hvnZZFZv/b957af897cf278fc393932c562c7918d-removebg-preview-1-Photoroom.png" alt="Centered Image">
+    </a>
   </div>
 
-  <!-- JavaScript to remove overlay on click and start music -->
+  <p>𐔌 . ⋮ i can do a lot in 15 minutes! .ᐟ ֹ ₊ ꒱</p>
+  <p>ᓚ₍ ^. .^₎</p>
+
   <script>
-    function removeOverlay() {
-      // Remove overlay
+    // When the text is clicked, remove the overlay and play the audio
+    document.getElementById('startText').addEventListener('click', function() {
+      // Hide the overlay
       document.getElementById('overlay').style.display = 'none';
       
-      // Show the website content
-      document.getElementById('content').style.display = 'block';
-
-      // Play the audio
-      var audio = document.getElementById('audio');
-      audio.play().catch(function(error) {
-        console.log("Audio playback failed:", error); // Log if playback fails
-      });
-
-      // Ensure the body is visible once overlay is removed
-      document.body.style.opacity = '1'; 
-    }
+      // Show the iframe (so the video/audio can play)
+      document.getElementById('youtubeAudio').style.display = 'block';
+    });
   </script>
 
 </body>
