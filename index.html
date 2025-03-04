@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>( >_•)︻デ═一</title>
   <link rel="icon" type="jpg" href="https://i.postimg.cc/PxJ5LcQL/e86fefc8a37d7a5959a4b22c94fed482-photoaidcom-cropped.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
       background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)), 
@@ -73,6 +74,54 @@
       0% { opacity: 0; }
       100% { opacity: 1; }
     }
+
+    /* Spotify-Style Profile Card */
+    .profile-card {
+      text-align: center;
+      background-color: #ffffff; /* White Background */
+      padding: 20px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ADD8E6; /* Light Blue Border */
+    }
+
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #ADD8E6; /* Light Blue Text */
+    }
+
+    .bio {
+      font-size: 14px;
+      color: #ADD8E6; /* Light Blue Text */
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .icons {
+      margin-top: 10px;
+    }
+
+    .icons a {
+      color: #ADD8E6; /* Light Blue Icons */
+      font-size: 20px;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .icons a:hover {
+      color: #ADD8E6; /* Light Blue Hover Effect */
+    }
   </style>
 </head>
 <body>
@@ -88,16 +137,16 @@
           frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
   </iframe>
 
-  <p>୨ৎ</p>
-
-  <div>
-    <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=wUK_URorQ0Orj-ObCiFXkg" target="_blank">
-      <img class="centered-image" src="https://i.postimg.cc/hvnZZFZv/b957af897cf278fc393932c562c7918d-removebg-preview-1-Photoroom.png" alt="Centered Image">
-    </a>
+  <!-- Spotify-Style Profile Card -->
+  <div class="profile-card">
+    <img src="https://i.postimg.cc/ryR7R5zm/46043eaa0841aa679e9398aee2e1cc7c.jpg" alt="Profile Picture">
+    <div class="profile-name">lizlizliz</div>
+    <div class="bio">𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</div>
+    <div class="icons">
+      <a href="https://open.spotify.com" target="_blank"><i class="fab fa-spotify"></i></a>
+      <a href="https://music.apple.com" target="_blank"><i class="fab fa-apple"></i></a>
+    </div>
   </div>
-
-  <p>𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</p>
-  <p>ᓚ₍ ^. .^₎</p>
 
   <script>
     // When the text is clicked, remove the overlay and play the audio
