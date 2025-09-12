@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>( >_•)︻デ═一</title>
-  <link rel="icon" type="jpg" href="https://i.postimg.cc/PxJ5LcQL/e86fefc8a37d7a5959a4b22c94fed482-photoaidcom-cropped.png">
+  <link rel="icon" type="jpg" href="https://i.ibb.co/rKvK1kpr/cropped-circle-image.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
-      background: linear-gradient(to bottom, rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8)), 
+      background: linear-gradient(to bottom, rgba(248, 232, 213, 0.8), rgba(248, 232, 213, 0.8)),
                   url('https://i.postimg.cc/xdbs0jWq/360-F-534871551-MOmx3mu3o-P1-Tkm-UW8-ZDff-Lp-Hrv86-LLr-E.jpg') no-repeat center center fixed;
       background-size: 100%;
-      color: white;
+      color: #5c4033;
       font-family: "Georgia", serif;
       height: 100vh;
       margin: 0;
@@ -24,32 +24,27 @@
       overflow: hidden;
     }
 
-    @media only screen and (max-width: 768px) {
+    /* Make paper background fit full page on mobile */
+    @media (max-width: 600px) {
       body {
-        background-size: 120%;
+        background-size: cover !important;
       }
-    }
-
-    h1, p, div {
-      margin: 0;
-      padding: 0;
     }
 
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 1); /* Fully opaque */
-      color: white;
+      inset: 0;
+      background-color: white;
+      color: #5c4033;
       font-size: 24px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       z-index: 1000;
-      transition: opacity 1s ease;
+      transition: opacity 0.6s ease;
+      cursor: pointer;
+      font-family: "Georgia", serif;
     }
 
     .overlay p {
@@ -57,11 +52,15 @@
       font-weight: bold;
       margin: 0;
       padding: 20px;
-      cursor: pointer;
     }
 
-    .overlay p:hover {
-      color: #ADD8E6;
+    .overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #youtubeAudio {
+      display: none;
     }
 
     .hidden-content {
@@ -70,14 +69,19 @@
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* Spotify-Style Profile Card */
+    .hidden-content.visible {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+
     .profile-card {
       text-align: center;
-      background-color: #ffffff; /* White Background */
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 10px;
       width: 320px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      color: #5c4033;
     }
 
     .profile-card img {
@@ -85,81 +89,141 @@
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #ADD8E6; /* Light Blue Border */
+      border: 3px solid #5c4033;
     }
 
     .profile-name {
       font-size: 24px;
       font-weight: bold;
       margin-top: 10px;
-      color: #ADD8E6; /* Light Blue Text */
+      color: #5c4033;
     }
 
     .bio {
       font-size: 14px;
-      color: #ADD8E6; /* Light Blue Text */
+      color: #5c4033;
       margin-top: 5px;
       font-style: italic;
     }
 
     .icons {
       margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
     }
 
-    .icons a {
-      color: #ADD8E6; /* Light Blue Icons */
-      font-size: 20px;
-      margin: 0 10px;
-      text-decoration: none;
+    .icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .icon-wrapper img,
+    .icon-wrapper i {
+      font-size: 22px;
+      color: #5c4033;
       transition: color 0.3s;
     }
 
-    .icons a:hover {
-      color: #ADD8E6; /* Light Blue Hover Effect */
+    .icon-wrapper img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      filter: brightness(0) saturate(100%) sepia(20%) hue-rotate(10deg) contrast(90%);
+    }
+
+    .icon-wrapper:hover i,
+    .icon-wrapper:hover img {
+      color: #8b5e3c;
+      filter: brightness(0) saturate(100%) sepia(40%) hue-rotate(10deg) contrast(110%);
+    }
+
+    .tooltip {
+      visibility: hidden;
+      background-color: #f8e8d5;
+      color: #5c4033;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: 4px;
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .icon-wrapper:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
 
-  <!-- Overlay that appears initially -->
+  <!-- Overlay -->
   <div id="overlay" class="overlay">
-    <p id="startText">Click to Access Website</p>
+    <p id="startText">click to access site</p>
   </div>
 
+  <!-- Main Content -->
   <div class="hidden-content" id="content">
-    <!-- Embed YouTube Audio -->
-    <iframe id="youtubeAudio" width="0" height="0" style="display:none;" 
-            src="https://www.youtube.com/embed/51zjlMhdSTE?autoplay=1&mute=0&loop=1&playlist=51zjlMhdSTE" 
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    <!-- YouTube Audio -->
+    <iframe
+      id="youtubeAudio"
+      width="0"
+      height="0"
+      src=""
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
     </iframe>
 
-    <!-- Spotify-Style Profile Card -->
+    <!-- Profile Card -->
     <div class="profile-card">
-      <img src="https://i.postimg.cc/ryR7R5zm/46043eaa0841aa679e9398aee2e1cc7c.jpg" alt="Profile Picture">
-      <div class="profile-name">lizlizliz</div>
-      <div class="bio">𐔌 . ⋮ thats that me espresso! .ᐟ ֹ ₊ ꒱</div>
+      <img src="https://i.ibb.co/gb4JnSF3/251a14e4f21b37ad874f06070bc0a64d.jpg" alt="Profile Picture">
+      <div class="profile-name">gabby!</div>
+      <div class="bio">𐔌 . ⋮ sippin' on my go go juice! .ᐟ ֹ ₊ ꒱</div>
       <div class="icons">
-        <a href="https://open.spotify.com/album/3WzBIQmn2hrulLeTY9smkk?si=AcQbiZWoQD-784hq-vXUag" target="_blank"><i class="fab fa-spotify"></i></a>
-        <a href="https://music.apple.com/us/album/short-n-sweet-deluxe/1795512297" target="_blank"><i class="fab fa-apple"></i></a>
+        <!-- Spotify -->
+        <div class="icon-wrapper">
+          <a href="https://open.spotify.com/user/312o4jg5mz5ohlmyehu7onmhjz5u" target="_blank">
+            <i class="fab fa-spotify"></i>
+          </a>
+        </div>
+
+        <!-- Apple Music -->
+        <div class="icon-wrapper">
+          <a href="https://music.apple.com/profile/foittu" target="_blank" aria-label="Apple Music">
+            <i class="fab fa-apple"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    document.getElementById('startText').addEventListener('click', function() {
-      // Fade out overlay
-      document.getElementById('overlay').style.opacity = '0';
+    document.getElementById('startText').addEventListener('click', function () {
+      const overlay = document.getElementById('overlay');
+      const content = document.getElementById('content');
+      const ytPlayer = document.getElementById('youtubeAudio');
 
-      // Show content with slide-up effect
+      // Hide overlay smoothly
+      overlay.classList.add('hidden');
+
+      // Float-in content after slight delay
       setTimeout(() => {
-        document.getElementById('overlay').style.display = 'none';
-        const content = document.getElementById('content');
-        content.style.opacity = '1';
-        content.style.transform = 'translateY(0)';
-      }, 1000);
-      
-      // Show YouTube audio
-      document.getElementById('youtubeAudio').style.display = 'block';
+        content.classList.add('visible');
+      }, 500);
+
+      // Load and play YouTube audio
+      ytPlayer.src = "https://www.youtube.com/embed/O1iXvRRyaBE?autoplay=1&loop=1&playlist=O1iXvRRyaBE&mute=0";
+      ytPlayer.style.display = "none";
     });
   </script>
 
